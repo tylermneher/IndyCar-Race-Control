@@ -1,0 +1,429 @@
+(base) [tylermneher@tylermneher-MBP ~]
+$ sudo nmap -vv -O -Pn -A -p1-60000 racecontrol.indycar.com
+Password:
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times will be slower.
+Starting Nmap 7.91 ( https://nmap.org ) at 2022-05-14 15:26 EDT
+NSE: Loaded 153 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 15:26
+Completed NSE at 15:26, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 15:26
+Completed NSE at 15:26, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 15:26
+Completed NSE at 15:26, 0.00s elapsed
+Initiating Parallel DNS resolution of 1 host. at 15:26
+Completed Parallel DNS resolution of 1 host. at 15:26, 0.00s elapsed
+Initiating SYN Stealth Scan at 15:26
+Scanning racecontrol.indycar.com (157.56.13.114) [60000 ports]
+Discovered open port 443/tcp on 157.56.13.114
+Discovered open port 80/tcp on 157.56.13.114
+SYN Stealth Scan Timing: About 8.68% done; ETC: 15:32 (0:05:26 remaining)
+Increasing send delay for 157.56.13.114 from 0 to 5 due to 12 out of 38 dropped probes since last increase.
+SYN Stealth Scan Timing: About 10.79% done; ETC: 15:36 (0:08:24 remaining)
+SYN Stealth Scan Timing: About 12.89% done; ETC: 15:38 (0:10:15 remaining)
+SYN Stealth Scan Timing: About 15.16% done; ETC: 15:40 (0:11:17 remaining)
+SYN Stealth Scan Timing: About 17.64% done; ETC: 15:41 (0:11:59 remaining)
+Discovered open port 1221/tcp on 157.56.13.114
+SYN Stealth Scan Timing: About 41.35% done; ETC: 15:46 (0:11:14 remaining)
+SYN Stealth Scan Timing: About 47.62% done; ETC: 15:46 (0:10:15 remaining)
+Discovered open port 4022/tcp on 157.56.13.114
+SYN Stealth Scan Timing: About 53.59% done; ETC: 15:46 (0:09:14 remaining)
+SYN Stealth Scan Timing: About 59.16% done; ETC: 15:46 (0:08:13 remaining)
+Discovered open port 454/tcp on 157.56.13.114
+SYN Stealth Scan Timing: About 64.75% done; ETC: 15:47 (0:07:12 remaining)
+SYN Stealth Scan Timing: About 70.21% done; ETC: 15:47 (0:06:08 remaining)
+SYN Stealth Scan Timing: About 75.56% done; ETC: 15:47 (0:05:04 remaining)
+SYN Stealth Scan Timing: About 80.72% done; ETC: 15:47 (0:04:01 remaining)
+Discovered open port 4024/tcp on 157.56.13.114
+SYN Stealth Scan Timing: About 85.81% done; ETC: 15:47 (0:02:58 remaining)
+SYN Stealth Scan Timing: About 90.98% done; ETC: 15:47 (0:01:54 remaining)
+SYN Stealth Scan Timing: About 95.99% done; ETC: 15:47 (0:00:51 remaining)
+Completed SYN Stealth Scan at 15:48, 1269.32s elapsed (60000 total ports)
+Initiating Service scan at 15:48
+Scanning 6 services on racecontrol.indycar.com (157.56.13.114)
+Completed Service scan at 15:49, 102.47s elapsed (6 services on 1 host)
+Initiating OS detection (try #1) against racecontrol.indycar.com (157.56.13.114)
+Retrying OS detection (try #2) against racecontrol.indycar.com (157.56.13.114)
+Initiating Traceroute at 15:49
+Completed Traceroute at 15:49, 3.12s elapsed
+Initiating Parallel DNS resolution of 13 hosts. at 15:49
+Completed Parallel DNS resolution of 13 hosts. at 15:49, 0.05s elapsed
+NSE: Script scanning 157.56.13.114.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 15:49
+Completed NSE at 15:49, 5.27s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 15:49
+Completed NSE at 15:50, 5.15s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 15:50
+Completed NSE at 15:50, 0.00s elapsed
+Nmap scan report for racecontrol.indycar.com (157.56.13.114)
+Host is up, received user-set (0.047s latency).
+Scanned at 2022-05-14 15:26:51 EDT for 1390s
+Not shown: 59994 filtered ports
+Reason: 59994 no-responses
+PORT     STATE SERVICE    REASON          VERSION
+80/tcp   open  http       syn-ack ttl 110
+| fingerprint-strings:
+|   GetRequest, HTTPOptions:
+|     HTTP/1.1 404 Site Not Found
+|     Content-Length: 2775
+|     Connection: close
+|     Content-Type: text/html
+|     Date: Sat, 14 May 2022 19:48:06 GMT
+|     <!DOCTYPE html>
+|     <html>
+|     <head>
+|     <title>Microsoft Azure Web App - Error 404</title>
+|     <style type="text/css">
+|     html {
+|     height: 100%;
+|     width: 100%;
+|     #feature {
+|     width: 960px;
+|     margin: 75px auto 0 auto;
+|     overflow: auto;
+|     #content {
+|     font-family: "Segoe UI";
+|     font-weight: normal;
+|     font-size: 22px;
+|     color: #ffffff;
+|     float: left;
+|     margin-top: 68px;
+|     margin-left: 0px;
+|     vertical-align: middle;
+|     #content h1 {
+|     font-family: "Segoe UI Light";
+|     color: #ffffff;
+|_    font-weight: normal;
+| http-methods:
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-title: Did not follow redirect to https://racecontrol.indycar.com/
+443/tcp  open  ssl/https  syn-ack ttl 111 Microsoft-IIS/10.0
+| fingerprint-strings:
+|   GetRequest, HTTPOptions:
+|     HTTP/1.1 404 Site Not Found
+|     Content-Length: 2775
+|     Connection: close
+|     Content-Type: text/html
+|     Date: Sat, 14 May 2022 19:48:12 GMT
+|     <!DOCTYPE html>
+|     <html>
+|     <head>
+|     <title>Microsoft Azure Web App - Error 404</title>
+|     <style type="text/css">
+|     html {
+|     height: 100%;
+|     width: 100%;
+|     #feature {
+|     width: 960px;
+|     margin: 75px auto 0 auto;
+|     overflow: auto;
+|     #content {
+|     font-family: "Segoe UI";
+|     font-weight: normal;
+|     font-size: 22px;
+|     color: #ffffff;
+|     float: left;
+|     margin-top: 68px;
+|     margin-left: 0px;
+|     vertical-align: middle;
+|     #content h1 {
+|     font-family: "Segoe UI Light";
+|     color: #ffffff;
+|_    font-weight: normal;
+|_http-favicon: Unknown favicon MD5: 53F2D1E34D13B5EBF90D8D13F1C334EF
+| http-methods:
+|   Supported Methods: OPTIONS TRACE GET HEAD POST
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: INDYCAR Race Control - Live Timing & Scoring
+| ssl-cert: Subject: commonName=*.indycar.com
+| Subject Alternative Name: DNS:*.indycar.com, DNS:indycar.com
+| Issuer: commonName=Go Daddy Secure Certificate Authority - G2/organizationName=GoDaddy.com, 
+Inc./stateOrProvinceName=Arizona/countryName=US/localityName=Scottsdale/organizationalUnitName=http://certs.godaddy.com/repository/
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2021-12-06T14:42:29
+| Not valid after:  2022-12-16T07:12:44
+| MD5:   5488 ac71 fb8f adc6 2703 33ca fafa 34f1
+| SHA-1: e2c4 c005 ff08 a315 3e0b 13c8 1aba 93d9 c5cc dbe7
+| -----BEGIN CERTIFICATE-----
+| MIIGjDCCBXSgAwIBAgIIXdi4JiQIc3swDQYJKoZIhvcNAQELBQAwgbQxCzAJBgNV
+| BAYTAlVTMRAwDgYDVQQIEwdBcml6b25hMRMwEQYDVQQHEwpTY290dHNkYWxlMRow
+| GAYDVQQKExFHb0RhZGR5LmNvbSwgSW5jLjEtMCsGA1UECxMkaHR0cDovL2NlcnRz
+| LmdvZGFkZHkuY29tL3JlcG9zaXRvcnkvMTMwMQYDVQQDEypHbyBEYWRkeSBTZWN1
+| cmUgQ2VydGlmaWNhdGUgQXV0aG9yaXR5IC0gRzIwHhcNMjExMjA2MTQ0MjI5WhcN
+| MjIxMjE2MDcxMjQ0WjAYMRYwFAYDVQQDDA0qLmluZHljYXIuY29tMIIBIjANBgkq
+| hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4HLtmPFmm/wkWX9oXvyPDmwViAe8KnkG
+| /9rM7WjjOZdKi8g2YNiyIbezWAuR3xWULUzx10O8OSfwHkftVpcW52bna2Onfvwz
+| rJOWNXJmSfOuy5HQxuxSQRxOqfz3sC4HZywmqL5rB9dJXhTkE37iHTA5srIEpNI4
+| UfIMUtI3LDuttwKM9ZfOSZtN1Fb8vCdXrNKBbGncoE1P5d5imj3nfDHLCj9Uneo1
+| EQyB8o20Kcmf5tEyQ0XI/ZZCJZxLDPpEHVqDhGKqtB9YQFosF61/y8cneDqCclhl
+| 1EF0JhlHf6lzLjX/kZ15gc1t9SEWuqU9jf3dTGaQ78j/52xpj2bYJQIDAQABo4ID
+| OzCCAzcwDAYDVR0TAQH/BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUH
+| AwIwDgYDVR0PAQH/BAQDAgWgMDgGA1UdHwQxMC8wLaAroCmGJ2h0dHA6Ly9jcmwu
+| Z29kYWRkeS5jb20vZ2RpZzJzMS0zNjI2LmNybDBdBgNVHSAEVjBUMEgGC2CGSAGG
+| /W0BBxcBMDkwNwYIKwYBBQUHAgEWK2h0dHA6Ly9jZXJ0aWZpY2F0ZXMuZ29kYWRk
+| eS5jb20vcmVwb3NpdG9yeS8wCAYGZ4EMAQIBMHYGCCsGAQUFBwEBBGowaDAkBggr
+| BgEFBQcwAYYYaHR0cDovL29jc3AuZ29kYWRkeS5jb20vMEAGCCsGAQUFBzAChjRo
+| dHRwOi8vY2VydGlmaWNhdGVzLmdvZGFkZHkuY29tL3JlcG9zaXRvcnkvZ2RpZzIu
+| Y3J0MB8GA1UdIwQYMBaAFEDCvSeOzDSDMKIz1/tss/C0LIDOMCUGA1UdEQQeMByC
+| DSouaW5keWNhci5jb22CC2luZHljYXIuY29tMB0GA1UdDgQWBBSRZPCubk+jf5Za
+| 9aY/k0E7iEHxHDCCAX4GCisGAQQB1nkCBAIEggFuBIIBagFoAHcAKXm+8J45OSHw
+| VnOfY6V35b5XfZxgCvj5TV0mXCVdx4QAAAF9kDI7tgAABAMASDBGAiEA4uYeB32v
+| sXY50G22jmGXAuxQMc5TfxKGoCfKaX2gSCICIQDcxXd0DirZz/UVIP5pqmAIUexg
+| MRaAHTCykcQV4lPLBAB1AN+lXqtogk8fbK3uuF9OPlrqzaISpGpejjsSwCBEXCpz
+| AAABfZAyPSgAAAQDAEYwRAIgfWTiuMF+R9AHra13JlcJFmYHlX0Sxr7DxAMh1uBi
+| iLgCIFNZR7PK5offkwJIGGYAb6l++jp9aYEL6wOcY8g/bvF3AHYAQcjKsd8iRkoQ
+| xqE6CUKHXk4xixsD6+tLx2jwkGKWBvYAAAF9kDI+DQAABAMARzBFAiEAozxi4ROQ
+| w0Ulrbf/6nymM/jOn5BWYETLcCT5klQwu2gCIEHa+Mm/cfNpdQ6nsIQZ+ydZsM64
+| nZf+ak9bn3py5k87MA0GCSqGSIb3DQEBCwUAA4IBAQB8o3GALHIc4ZVIhYhSNZRS
+| 5BhxlRHEPz+4RYmOuDOmGqarUxTeiHUH+ywcMOjG/+06O3uf6QhjAz7KUjBDrEBY
+| bPvn1VB5TNFLgyebZTjN2DvFiSMf7D3b0dExS5nGMXd2CxHfAw1cTa8B3oZgoQwy
+| hLpnEop/s1K7ge2cDkmnqEmovn4Z77m49DUqEMyx+lU3KTwbm0fi2szvzj/Va9WM
+| puH4JuM90V9mn3UA63fFW1CT64nIeavNtA/f+vGbZzUXNe1bcm0FlWPvTyPYdlbr
+| qiVzi/ixBpKDCdHQQ7ORfW8Sp3+Qpa7xUsOCXyYN5tMwGlAkZZVeuuREJZBIjq/j
+|_-----END CERTIFICATE-----
+| tls-alpn:
+|_  http/1.1
+454/tcp  open  ssl/upnp   syn-ack ttl 110 Microsoft IIS httpd
+| ssl-cert: Subject: commonName=waws-prod-ch1-025.api.azurewebsites.windows.net/organizationName=Microsoft 
+Corporation/stateOrProvinceName=Washington/countryName=US/localityName=Redmond
+| Subject Alternative Name: DNS:waws-prod-ch1-025.api.azurewebsites.windows.net
+| Issuer: commonName=DigiCert SHA2 Secure Server CA/organizationName=DigiCert Inc/countryName=US
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2022-02-19T00:00:00
+| Not valid after:  2023-02-19T23:59:59
+| MD5:   0292 2b78 1ba5 7a01 3e01 005c d3c1 7c04
+| SHA-1: f176 d1ce 4b30 24c6 748d 22e6 0bb8 ee42 bd6e 6831
+| -----BEGIN CERTIFICATE-----
+| MIIFcjCCBFqgAwIBAgIQC5ECxMtOwqSzlS1jaBQ09jANBgkqhkiG9w0BAQsFADBN
+| MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E
+| aWdpQ2VydCBTSEEyIFNlY3VyZSBTZXJ2ZXIgQ0EwHhcNMjIwMjE5MDAwMDAwWhcN
+| MjMwMjE5MjM1OTU5WjCBjjELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0
+| b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3Jh
+| dGlvbjE4MDYGA1UEAxMvd2F3cy1wcm9kLWNoMS0wMjUuYXBpLmF6dXJld2Vic2l0
+| ZXMud2luZG93cy5uZXQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr
+| 8waPE7pQ8TknOYywmAu599x8Ywo307DfNkDZFwxeQM8metbmUlrUdAi9bPxC7ugu
+| seDd3s0MXg7xFaETIB7K7MALzPKhzT8qaHz/ud0F/O1bH0LHUBsLQps6dg//cS+3
+| ue1/Tk1qH6AEGfA109TxrNk6Njm9181E0lL3B5wh+OrxPI9/rm2VxsYIzxBXY5j3
+| dMdErcXDmKVKlbzdrd3XiqIOEStxKAWFrRWfsfybnss6qGpH7FY5Xx6uW3Ppw1qu
+| 0xnmdUURybEZ42tFWCx85ZmTzdTbRzHgrKKthUfBpEk+0AbdUaxAz5fK/zzjY5vy
+| yimcTEVF8C0nigtoOs5pAgMBAAGjggIKMIICBjAfBgNVHSMEGDAWgBQPgGEcgjFh
+| 1S8o541GOLQs4cbZ4jAdBgNVHQ4EFgQUXmFvAdQJnKltOh5XNW8Vj/GsrkowOgYD
+| VR0RBDMwMYIvd2F3cy1wcm9kLWNoMS0wMjUuYXBpLmF6dXJld2Vic2l0ZXMud2lu
+| ZG93cy5uZXQwDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggr
+| BgEFBQcDAjCBjQYDVR0fBIGFMIGCMD+gPaA7hjlodHRwOi8vY3JsMy5kaWdpY2Vy
+| dC5jb20vRGlnaWNlcnRTSEEyU2VjdXJlU2VydmVyQ0EtMS5jcmwwP6A9oDuGOWh0
+| dHA6Ly9jcmw0LmRpZ2ljZXJ0LmNvbS9EaWdpY2VydFNIQTJTZWN1cmVTZXJ2ZXJD
+| QS0xLmNybDA+BgNVHSAENzA1MDMGBmeBDAECAjApMCcGCCsGAQUFBwIBFhtodHRw
+| Oi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwfgYIKwYBBQUHAQEEcjBwMCQGCCsGAQUF
+| BzABhhhodHRwOi8vb2NzcC5kaWdpY2VydC5jb20wSAYIKwYBBQUHMAKGPGh0dHA6
+| Ly9jYWNlcnRzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2VydFNIQTJTZWN1cmVTZXJ2ZXJD
+| QS0yLmNydDAJBgNVHRMEAjAAMA0GCSqGSIb3DQEBCwUAA4IBAQA6Nx3RD3LPS7XW
+| GmjhNlsV4ZqITEulwf5TgFyThIWa7VPuOJTEKg4aWHbcDD7A90j3Hjn36UAlKhZT
+| hmbEocWQCzAkJnszaIU48f7CnuNAAjuAmtx/k2XEeex2+O5bti2Lm3SWCo+Za/dX
+| lWARa6BdozJxPUACMMUxzzOO5rVL6vGlN7gy/c7pN/f45cav3z5WDkAeF2UHTb8v
+| 0M/5YTanZ+pY38TiHg1+R2hT+ugkU87uAV9AaicaWq49/5+v8OYfE/qBQ7TkaLff
+| GijWUHLaD4OdqQg1ebxXvcoko5d8mnDdb8jCShugMLydCqhWlObk6zCAYOCAa9Wi
+| 67+F4p51
+|_-----END CERTIFICATE-----
+|_ssl-date: 2022-05-14T19:49:56+00:00; 0s from scanner time.
+| tls-alpn:
+|   h2
+|_  http/1.1
+1221/tcp open  http       syn-ack ttl 109 Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-favicon: Unknown favicon MD5: 92588F078DA3C15546F3607ABD0EC952
+| http-methods:
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Site doesn't have a title (text/plain).
+|_http-trane-info: Problem with XML parsing of /evox/about
+4022/tcp open  dnox?      syn-ack ttl 109
+4024/tcp open  tnp1-port? syn-ack ttl 109
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at 
+https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port80-TCP:V=7.91%I=7%D=5/14%Time=62800776%P=x86_64-apple-darwin17.7.0%
+SF:r(GetRequest,B5D,"HTTP/1\.1\x20404\x20Site\x20Not\x20Found\r\nContent-L
+SF:ength:\x202775\r\nConnection:\x20close\r\nContent-Type:\x20text/html\r\
+SF:nDate:\x20Sat,\x2014\x20May\x202022\x2019:48:06\x20GMT\r\n\r\n<!DOCTYPE
+SF:\x20html>\r\n<html>\r\n<head>\r\n\x20\x20\x20\x20<title>Microsoft\x20Az
+SF:ure\x20Web\x20App\x20-\x20Error\x20404</title>\r\n\x20\x20\x20\x20<styl
+SF:e\x20type=\"text/css\">\r\n\x20\x20\x20\x20\x20\x20\x20\x20html\x20{\r\
+SF:n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x20100%;\r\n\x
+SF:20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x20100%;\r\n\x20\x
+SF:20\x20\x20\x20\x20\x20\x20}\r\n\r\n\x20\x20\x20\x20\x20\x20\x20\x20#fea
+SF:ture\x20{\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x20
+SF:960px;\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20margin:\x2075
+SF:px\x20auto\x200\x20auto;\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2
+SF:0\x20overflow:\x20auto;\r\n\x20\x20\x20\x20\x20\x20\x20\x20}\r\n\r\n\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20#content\x20{\r\n\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20font-family:\x20\"Segoe\x20UI\";\r\n\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20font-weight:\x20normal;\r\n\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20font-size:\x2022px;\r\n\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20color:\x20#ffffff;\r\n\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20float:\x20left;\r\n\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20margin-top:\x2068px;\r\n\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20margin-left:\x200px;\r\n\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20vertical-align:\x20middle;\r\n\x20
+SF:\x20\x20\x20\x20\x20\x20\x20}\r\n\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x
+SF:20\x20\x20\x20#content\x20h1\x20{\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20font-family:\x20\"Segoe\x20UI\x20Light\";
+SF:\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20col
+SF:or:\x20#ffffff;\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20font-weight:\x20normal;\r\n\x20\x20\x20")%r(HTTPOptions,B5D
+SF:,"HTTP/1\.1\x20404\x20Site\x20Not\x20Found\r\nContent-Length:\x202775\r
+SF:\nConnection:\x20close\r\nContent-Type:\x20text/html\r\nDate:\x20Sat,\x
+SF:2014\x20May\x202022\x2019:48:06\x20GMT\r\n\r\n<!DOCTYPE\x20html>\r\n<ht
+SF:ml>\r\n<head>\r\n\x20\x20\x20\x20<title>Microsoft\x20Azure\x20Web\x20Ap
+SF:p\x20-\x20Error\x20404</title>\r\n\x20\x20\x20\x20<style\x20type=\"text
+SF:/css\">\r\n\x20\x20\x20\x20\x20\x20\x20\x20html\x20{\r\n\x20\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20\x20height:\x20100%;\r\n\x20\x20\x20\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20width:\x20100%;\r\n\x20\x20\x20\x20\x20\x
+SF:20\x20\x20}\r\n\r\n\x20\x20\x20\x20\x20\x20\x20\x20#feature\x20{\r\n\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x20960px;\r\n\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20margin:\x2075px\x20auto\x200\
+SF:x20auto;\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20overflow:\x
+SF:20auto;\r\n\x20\x20\x20\x20\x20\x20\x20\x20}\r\n\r\n\x20\x20\x20\x20\x2
+SF:0\x20\x20\x20#content\x20{\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20font-family:\x20\"Segoe\x20UI\";\r\n\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20font-weight:\x20normal;\r\n\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20font-size:\x2022px;\r\n\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20color:\x20#ffffff;\r\n\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20float:\x20left;\r\n\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20margin-top:\x2068px;\r\n\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20margin-left:\x200px;\r\n\x20\x20\x20\x20\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20vertical-align:\x20middle;\r\n\x20\x20\x20\x20\x20
+SF:\x20\x20\x20}\r\n\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20#c
+SF:ontent\x20h1\x20{\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x
+SF:20\x20\x20\x20font-family:\x20\"Segoe\x20UI\x20Light\";\r\n\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20color:\x20#ffffff;\
+SF:r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20font
+SF:-weight:\x20normal;\r\n\x20\x20\x20");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port443-TCP:V=7.91%T=SSL%I=7%D=5/14%Time=6280077D%P=x86_64-apple-darwin
+SF:17.7.0%r(GetRequest,B5D,"HTTP/1\.1\x20404\x20Site\x20Not\x20Found\r\nCo
+SF:ntent-Length:\x202775\r\nConnection:\x20close\r\nContent-Type:\x20text/
+SF:html\r\nDate:\x20Sat,\x2014\x20May\x202022\x2019:48:12\x20GMT\r\n\r\n<!
+SF:DOCTYPE\x20html>\r\n<html>\r\n<head>\r\n\x20\x20\x20\x20<title>Microsof
+SF:t\x20Azure\x20Web\x20App\x20-\x20Error\x20404</title>\r\n\x20\x20\x20\x
+SF:20<style\x20type=\"text/css\">\r\n\x20\x20\x20\x20\x20\x20\x20\x20html\
+SF:x20{\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x20100%
+SF:;\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x20100%;\r\
+SF:n\x20\x20\x20\x20\x20\x20\x20\x20}\r\n\r\n\x20\x20\x20\x20\x20\x20\x20\
+SF:x20#feature\x20{\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20wid
+SF:th:\x20960px;\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20margin
+SF::\x2075px\x20auto\x200\x20auto;\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20\x20\x20overflow:\x20auto;\r\n\x20\x20\x20\x20\x20\x20\x20\x20}\r\n
+SF:\r\n\x20\x20\x20\x20\x20\x20\x20\x20#content\x20{\r\n\x20\x20\x20\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20font-family:\x20\"Segoe\x20UI\";\r\n\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20font-weight:\x20normal;\r\n\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20font-size:\x2022px;\r\n\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20color:\x20#ffffff;\r\n\x
+SF:20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20float:\x20left;\r\n\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20margin-top:\x2068px;\r\n\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20margin-left:\x200px;\r\n\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20vertical-align:\x20middle;\
+SF:r\n\x20\x20\x20\x20\x20\x20\x20\x20}\r\n\r\n\x20\x20\x20\x20\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20#content\x20h1\x20{\r\n\x20\x20\x20\x20\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20font-family:\x20\"Segoe\x20UI\x20L
+SF:ight\";\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20
+SF:\x20color:\x20#ffffff;\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20font-weight:\x20normal;\r\n\x20\x20\x20")%r(HTTPOpti
+SF:ons,B5D,"HTTP/1\.1\x20404\x20Site\x20Not\x20Found\r\nContent-Length:\x2
+SF:02775\r\nConnection:\x20close\r\nContent-Type:\x20text/html\r\nDate:\x2
+SF:0Sat,\x2014\x20May\x202022\x2019:48:12\x20GMT\r\n\r\n<!DOCTYPE\x20html>
+SF:\r\n<html>\r\n<head>\r\n\x20\x20\x20\x20<title>Microsoft\x20Azure\x20We
+SF:b\x20App\x20-\x20Error\x20404</title>\r\n\x20\x20\x20\x20<style\x20type
+SF:=\"text/css\">\r\n\x20\x20\x20\x20\x20\x20\x20\x20html\x20{\r\n\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20height:\x20100%;\r\n\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x20100%;\r\n\x20\x20\x20\x2
+SF:0\x20\x20\x20\x20}\r\n\r\n\x20\x20\x20\x20\x20\x20\x20\x20#feature\x20{
+SF:\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20width:\x20960px;\r\
+SF:n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20margin:\x2075px\x20aut
+SF:o\x200\x20auto;\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20over
+SF:flow:\x20auto;\r\n\x20\x20\x20\x20\x20\x20\x20\x20}\r\n\r\n\x20\x20\x20
+SF:\x20\x20\x20\x20\x20#content\x20{\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x
+SF:20\x20\x20\x20font-family:\x20\"Segoe\x20UI\";\r\n\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20font-weight:\x20normal;\r\n\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20font-size:\x2022px;\r\n\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20color:\x20#ffffff;\r\n\x20\x20\x20\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20float:\x20left;\r\n\x20\x20\x20\x20\x20\x
+SF:20\x20\x20\x20\x20\x20\x20margin-top:\x2068px;\r\n\x20\x20\x20\x20\x20\
+SF:x20\x20\x20\x20\x20\x20\x20margin-left:\x200px;\r\n\x20\x20\x20\x20\x20
+SF:\x20\x20\x20\x20\x20\x20\x20vertical-align:\x20middle;\r\n\x20\x20\x20\
+SF:x20\x20\x20\x20\x20}\r\n\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2
+SF:0\x20#content\x20h1\x20{\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x2
+SF:0\x20\x20\x20\x20\x20font-family:\x20\"Segoe\x20UI\x20Light\";\r\n\x20\
+SF:x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20color:\x20#f
+SF:fffff;\r\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\
+SF:x20font-weight:\x20normal;\r\n\x20\x20\x20");
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+OS fingerprint not ideal because: Missing a closed TCP port so results incomplete
+No OS matches for host
+TCP/IP fingerprint:
+SCAN(V=7.91%E=4%D=5/14%OT=80%CT=%CU=%PV=N%DS=23%DC=T%G=N%TM=628007E9%P=x86_64-apple-darwin17.7.0)
+SEQ(SP=105%GCD=1%ISR=10D%TI=RD%TS=1A)
+OPS(O1=M5A0NW8ST11%O2=M5A0NW8ST11%O3=M5A0NW8NNT11%O4=M5A0NW8ST11%O5=M5A0NW8ST11%O6=M5A0ST11)
+WIN(W1=2000%W2=2000%W3=2000%W4=2000%W5=2000%W6=2000)
+ECN(R=Y%DF=Y%TG=80%W=2000%O=M5A0NW8NNS%CC=Y%Q=)
+T1(R=Y%DF=Y%TG=80%S=O%A=S+%F=AS%RD=0%Q=)
+T2(R=N)
+T3(R=N)
+T4(R=N)
+U1(R=N)
+IE(R=N)
+
+Uptime guess: 0.000 days (since Sat May 14 15:49:34 2022)
+Network Distance: 23 hops
+TCP Sequence Prediction: Difficulty=262 (Good luck!)
+IP ID Sequence Generation: Randomized
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: 0s
+
+TRACEROUTE (using port 443/tcp)
+HOP RTT      ADDRESS
+1   7.88 ms  seaside-router.local (192.168.1.1)
+2   ...
+3   19.10 ms 67.59.247.61
+4   26.19 ms ool-4353f38e.dyn.optonline.net.243.83.67.in-addr.arpa (67.83.243.142)
+5   27.33 ms 67.59.251.78
+6   27.34 ms 64.15.3.140
+7   27.24 ms cablevision.ier01.ewr30.ntwk.msn.net (104.44.197.193)
+8   24.68 ms ae28-0.ear05.ewr30.ntwk.msn.net (104.44.231.64)
+9   56.49 ms be-24-0.ibr01.ewr30.ntwk.msn.net (104.44.33.211)
+10  49.26 ms be-10-0.ibr02.cle30.ntwk.msn.net (104.44.17.217)
+11  44.99 ms be-4-0.ibr03.bl20.ntwk.msn.net (104.44.16.178)
+12  46.67 ms ae124-0.icr03.ch4.ntwk.msn.net (104.44.23.95)
+13  ... 14
+15  46.11 ms ae100-0.icr01.ch4.ntwk.msn.net (104.44.11.6)
+16  ... 22
+23  48.73 ms 157.56.13.114
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 15:50
+Completed NSE at 15:50, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 15:50
+Completed NSE at 15:50, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 15:50
+Completed NSE at 15:50, 0.00s elapsed
+Read data files from: /usr/local/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 1391.94 seconds
+           Raw packets sent: 121096 (5.333MB) | Rcvd: 1162 (69.479KB)
+(base) [tylermneher@tylermneher-MBP ~]
+$
