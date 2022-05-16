@@ -1,0 +1,1 @@
+sudo nmap -A -p1-60000 -Pn -O -vv -oN ~/racecontrol.txt racecontrol.indycar.com
