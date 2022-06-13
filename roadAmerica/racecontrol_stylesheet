@@ -1,0 +1,833 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>INDYCAR Race Control - Live Timing & Scoring</title>
+
+    <script src="https://live.rezync.com/sync?c=16b6410431b6374e780104abb0443ca8&p=07fd910549984df0369f11b9f95031be&k=indycar-timing-scoring-page" type="text/javascript"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js"></script>
+
+    <meta property="og:title" content="INDYCAR Race Control - Live Timing & Scoring" />
+    <meta property="og:url" content="http://racecontrol.indycar.com" />
+    <meta property="og:image" content="https://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2019/RaceControl_img_2019.jpg" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js" class="pre"></script>
+    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.1.1/js/msal.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="scripts/detectmobilebrowser.js"></script>
+
+    <script type="text/javascript">
+        if (jQuery.browser.mobile) {
+            $('head').append('<link rel="stylesheet" href="https://digbza2f4g9qo.cloudfront.net/styles/indycar/mobile.css" />');
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.src = "/scripts/indycar/mobile.js";
+            $("head").append(s);
+        }
+        else {
+            $('head').append('<link rel="stylesheet" href="https://digbza2f4g9qo.cloudfront.net/styles/indycar/desktop.css" />');
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.src = "/scripts/indycar/desktop.js";
+            $("head").append(s);
+        }
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+    <meta property="fb:app_id" content="371698759518520" />
+    <link rel="icon" href="https://digbza2f4g9qo.cloudfront.net/images/indycar/global/favicon.ico" />
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-440007-37']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.indycar.com/" />
+    <meta property="og:image" content="https://digbza2f4g9qo.cloudfront.net/~/media/IndyCar/Logos/logo.png?vs=1&d=20151217T142314" />
+    <meta property="og:site_name" content="IndyCar.com" />
+    <meta property="og:admins" content="371698759518520" />
+    <meta property="og:description" content="The Official Site of IndyCar News, Drivers, Schedule & Shop | IndyCar.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@indycar" />
+    <meta name="twitter:title" content="INDYCAR Race Control" />
+    <meta name="twitter:description" content="Live Timing & Scoring for INDYCAR, the IndyCar Series, and the Road To Indy." />
+    <meta name="twitter:image" content="https://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2019/RaceControl_img_2019.jpg" />
+
+    <link href="Styles/Site.css" rel="stylesheet" />
+
+
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                yos = (window.pageYOffset > $("#hiddenOffset").val());
+                var nta = $("#hiddenNoTrackActivity").val();
+                if (yos && nta == 'FALSE') {
+                    $("#StickyVideoBar").addClass("stickyVideo");
+                    $("#StickyVideoBar").removeClass("hiddenStickyVideo");
+                    $("#VideoDiv").addClass("scrolledTop");
+                    $("#VideoDiv").removeClass("nonScrolled");
+                    $("#SessionInformationDiv").addClass("sessionInformationDivScrolled");
+                    $("#SessionInformationDiv").removeClass("sessionInformationNonScrolled");
+                    if ($("#hiddenSeries").val() == 'I' || $("#hiddenSeries").val() == 'L') {
+                        $("#FeatureDriverDiv").addClass("featuredDriverScrolled");
+                        $("#FeatureDriverDiv").removeClass("featuredDriverHidden");
+                    }
+                    else {
+                        $("#FeatureDriverDiv").removeClass("featuredDriverScrolled");
+                        $("#FeatureDriverDiv").addClass("featuredDriverHidden");
+                    }
+                    $("#FlagDiv").addClass("flagScrolled");
+                    $("#FlagDiv").removeClass("flagNonScrolled");
+                    $("#SessionInfoDiv").removeClass("SessionInfoDivNonScrolled");
+                    $("#SessionInfoDiv").addClass("SessionInfoDivScrolled");
+
+                } else {
+                    $("#StickyVideoBar").addClass("hiddenStickyVideo");
+                    $("#StickyVideoBar").removeClass("stickyVideo");
+                    $("#VideoDiv").addClass("nonScrolled");
+                    $("#VideoDiv").removeClass("scrolledTop");
+                    $("#SessionInformationDiv").removeClass("sessionInformationDivScrolled");
+                    $("#SessionInformationDiv").addClass("sessionInformationNonScrolled");
+                    if ($("#hiddenSeries").val() == 'I' || $("#hiddenSeries").val() == 'L') {
+                        $("#FeatureDriverDiv").removeClass("featuredDriverScrolled");
+                        $("#FeatureDriverDiv").addClass("featuredDriverHidden");
+                    }
+                    $("#FlagDiv").removeClass("flagScrolled");
+                    $("#FlagDiv").addClass("flagNonScrolled");
+                    $("#SessionInfoDiv").addClass("SessionInfoDivNonScrolled");
+                    $("#SessionInfoDiv").removeClass("SessionInfoDivScrolled");
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div id="StickyVideoBar">
+    </div>
+    <div>
+        <script type="text/javascript">
+            var wa_data =
+            {
+                page: {
+                    pageInfo: {
+                        pageName: "RaceControl",
+                        pageURL: "http://racecontrol.indycar.com"
+                    }
+                }
+            };
+        </script>
+        <script type="text/javascript">
+            (function () {
+                var randomh = Math.random();
+                var e = document.getElementsByTagName("script")[0];
+                var d = document.createElement("script");
+
+                d.src = "/scripts/RaceControlMobile.js?x=" + randomh + "";
+                d.type = "text/javascript";
+                d.async = true;
+                d.defer = true;
+                e.parentNode.insertBefore(d, e);
+            })();
+        </script>
+        <header id="header" class="header nonScrolledHeader">
+            <div class="utilitarian">
+                <div class="utilitarian__container">
+                    <div class="utilitarian__logo-container">
+                        <a href="http://www.indycar.com" class="utilitarian__home">
+                            <img src="https://digbza2f4g9qo.cloudfront.net/~/media/IndyCar/Logos/INDYCAR-Dark?w=115" alt="IndyCar Series" class="utilitarian__logo" />
+                        </a>
+                    </div>
+                    <!-- Social-->
+                    <div class="social-header">
+                        <div class="social-header-bar">
+                            <ul class="social-header-bar__social-list">
+                                <li class="social-header-bar__social-item">
+                                    <a href="http://www.instagram.com/indycar" class="social-header-bar__social-link" target="_blank">
+                                        <svg class="social-header-bar__social-instagram">
+                                            <use xlink:href="https://digbza2f4g9qo.cloudfront.net/assets/Images/indycar/sprite.svg#instagram"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="social-header-bar__social-item">
+                                    <a href="http://twitter.com/indycar" class="social-header-bar__social-link" target="_blank">
+                                        <svg class="social-header-bar__social-twitter">
+                                            <use xlink:href="https://digbza2f4g9qo.cloudfront.net/assets/Images/indycar/sprite.svg#twitter"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="social-header-bar__social-item">
+                                    <a href="http://facebook.com/indycar" class="social-header-bar__social-link" target="_blank">
+                                        <svg class="social-header-bar__social-facebook">
+                                            <use xlink:href="https://digbza2f4g9qo.cloudfront.net/assets/Images/indycar/sprite.svg#facebook"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="social-header-bar__social-item">
+                                    <a href="http://www.youtube.com/indycars" class="social-header-bar__social-link" target="_blank">
+                                        <svg class="social-header-bar__social-youtube">
+                                            <use xlink:href="https://digbza2f4g9qo.cloudfront.net/assets/Images/indycar/sprite.svg#youtube"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Nav-->
+                    <div class="nav" style="width: 100%; max-width: 100%;">
+                        <div class="nav__container">
+                            <ul class="nav__primary">
+
+
+                                <li class="nav__primary-item">
+                                    <a href="https://www.indycar.com/Drivers" class="nav__primary-link">Drivers</a>
+
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="https://www.indycar.com/Schedule" class="nav__primary-link">Schedule</a>
+
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="https://www.indycar.com/Videos" class="nav__primary-link">Video</a>
+
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="https://www.indycar.com/Photos" class="nav__primary-link">Photo</a>
+
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="https://www.indycar.com/News" class="nav__primary-link">News</a>
+
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="https://www.indycar.com/Results" class="nav__primary-link">Results</a>
+
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="" class="nav__primary-link">Fan Info<svg class="nav__primary-icon"><use xlink:href="https://digbza2f4g9qo.cloudfront.net/images/indycar/sprite.svg#icon-header-arrow"></use></svg></a>
+                                    <div id="ctl01_ctl03_ctl02_ctl03_rptNavigation_pnlDropdown_6" class="more-links-parent nav__secondary-panel">
+
+
+                                        <div id="ctl01_ctl03_ctl02_ctl03_rptNavigation_rptDropdownNavigation_6_pnlNavSecondaryList_0" class="nav__secondary-list">
+
+
+                                            <ul class="nav__secondary">
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://www.indycar.com/ways-to-watch" class="nav__secondary-link">
+                                                        How to Watch / Listen
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://www.indycar.com/Radio" class="nav__secondary-link">
+                                                        INDYCAR Radio
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://indycarnation.indycar.com/" class="nav__secondary-link">
+                                                        INDYCAR Nation
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="http://fantasy.indycar.com" class="nav__secondary-link">
+                                                        Fantasy Racing
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://www.indycar.com/Fan-Info/INDYCAR-101" class="nav__secondary-link">
+                                                        INDYCAR 101
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://www.indycar.com/eLearning/PitStop" class="nav__secondary-link">
+                                                        e-Learning Pitstop
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="" class="nav__primary-link">Road To Indy<svg class="nav__primary-icon"><use xlink:href="https://digbza2f4g9qo.cloudfront.net/images/indycar/sprite.svg#icon-header-arrow"></use></svg></a>
+                                    <div id="ctl01_ctl03_ctl02_ctl03_rptNavigation_pnlDropdown_7" class="more-links-parent nav__secondary-panel">
+
+
+                                        <div id="ctl01_ctl03_ctl02_ctl03_rptNavigation_rptDropdownNavigation_7_pnlNavSecondaryList_0" class="nav__secondary-list">
+
+
+                                            <ul class="nav__secondary">
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://www.indycar.com/IndyLights" class="nav__secondary-link">
+                                                        Indy Lights
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="http://www.indypro2000.com" class="nav__secondary-link">
+                                                        Indy Pro 2000
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://www.usf2000.com/" class="nav__secondary-link">
+                                                        Cooper Tires USF2000 Championship
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="http://shop.ims.com/indycar" class="nav__primary-link">Shop</a>
+
+                                </li>
+
+                                <li class="nav__primary-item nav__primary-item--social">
+                                    <div class="social-header-bar social-header-bar--alt">
+                                        <ul class="social-header-bar__social-list">
+                                            <li class="social-header-bar__social-item">
+                                                <a href="#" class="social-header-bar__social-link">
+                                                    <svg class="social-header-bar__social-instagram">
+                                                        <use xlink:href="https://digbza2f4g9qo.cloudfront.net/images/indycar/sprite.svg#instagram"></use>
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            <li class="social-header-bar__social-item">
+                                                <a href="#" class="social-header-bar__social-link">
+                                                    <svg class="social-header-bar__social-twitter">
+                                                        <use xlink:href="https://digbza2f4g9qo.cloudfront.net/images/indycar/sprite.svg#twitter"></use>
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            <li class="social-header-bar__social-item">
+                                                <a href="#" class="social-header-bar__social-link">
+                                                    <svg class="social-header-bar__social-facebook">
+                                                        <use xlink:href="https://digbza2f4g9qo.cloudfront.net/images/indycar/sprite.svg#facebook"></use>
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            <li class="social-header-bar__social-item">
+                                                <a href="#" class="social-header-bar__social-link">
+                                                    <svg class="social-header-bar__social-youtube">
+                                                        <use xlink:href="https://digbza2f4g9qo.cloudfront.net/images/indycar/sprite.svg#youtube"></use>
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <a href="#" class="nav__toggle-nav"><span class="nav__nav-icon"></span></a>
+                        </div>
+                    </div>
+
+                </div>
+                <span class="utilitarian__background-container">
+                    <span class="utilitarian__background-column-brand"><span class="utilitarian__background-column"></span></span><span class="utilitarian__background-column-nav">
+                        <span class="utilitarian__background-column"></span>
+                        <span class="utilitarian__background-column"></span>
+                    </span>
+                </span>
+            </div>
+        </header>
+        <!-- specific js for different devices-->
+        <script>
+            require(["https://digbza2f4g9qo.cloudfront.net/scripts/indycar/modules/_desktop/header.js"], function (Header) {
+                new Header(
+                    {
+                        element: "#header",
+                        menuToggle: ".nav__toggle-nav",
+                        logoSwitchBtn: "utilitarian__site-switch",
+                        logoElements: ["utilitarian__logo-divide", "utilitarian__logo-alt-container"],
+                        moreLinks: ["more-links__close", "cta-list__link--more"],
+                        moreLinksPanel: "more-links",
+                        navPrimary: "nav__primary-link",
+                        stateCheck: "html",
+                        searchState: "search-open",
+                        searchToggle: ["utilitarian__toggle-search", "nav__toggle-search"],
+                        searchForm: "search-header-bar__search-form",
+                        searchClose: "search-header-bar__search-form-close",
+                        nextRaceToggle: "next-race__link"
+                    });
+            })
+        </script>
+
+        <div id="loginDiv" class="main-wrapper" style="min-height: 300px; padding-top: 25px; display: none;">
+            <div class="authenticationContent">
+                <div class="authenticationInformation">
+                    <div id="registrationInformationDiv">
+                        <h2 style="font-family: 'Roboto Condensed', sans-serif; font-size: 4rem; font-style: italic; font-weight: bold; text-transform: uppercase; padding: 5px 5px 5px 0; color: #ed1c24;">Live Timing & Scoring</h2>
+                        <div style="clear: both; font-family: Arial, sans-serif; font-size: 2rem; color: black; padding: 0 0 15px 0;">
+                            Enjoy FREE premium content with a single username and password.  If you are an INDYCAR Nation member, your login works across all of our digital platforms.
+                        </div>
+                        <div style="clear: both; padding: 10px 0;">
+                            <input type="button" value="Sign In/Sign Up" onclick="login()" class="btn" />
+                        </div>
+                        <div style="clear: both; font-family: Arial, sans-serif; font-size: 2rem; color: black; padding: 0 0 15px 0;">
+                            <i>This is a new Sign In process for 2019, please use your INDYCAR Nation or INDYCAR Mobile username and password to sign in or create a new account by using the button above.</i><br /><br />
+                            For questions, please consult the FAQ <a href="https://www.indycar.com/2019/Login-FAQ" style="color: red;" target="_blank">HERE</a>.
+                        </div>
+                    </div>
+                </div>
+                <div class="authenticationImage">
+                    <img src="https://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2018/img_authentication.jpg" class="authenticationImageDisplay" />
+                </div>
+            </div>
+        </div>
+
+        <div id="noTrackActivityDiv" style="display: none; width: 100%;" class="main-wrapper">
+            <div class="bg-grey main-container">
+
+                <div id="top-content" class="LeftColumnContainer clearfix">
+                    <!--<img src="https://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2019/img_2019_no_track_activity.jpg" style="width: 100%;" />-->
+                    <img src="https://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2020/NoTrackActivity_400px.jpg" style="width: 100%;" />
+                </div>
+                <div class="LeftColumnContainer clearfix" style="margin-top: 25px;">
+                    <div class="feederLink2">
+                        <a href="https://www.indypro2000.com/results/live-timing" target="_blank">
+                            <img src="http://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2020/IP2K-LiveTiming.jpg" border="0" />
+                        </a>
+                    </div>
+                    <div class="feederLink3">
+                        <a href="https://www.usf2000.com/results/live-timing" target="_blank">
+                            <img src="http://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2020/USF2K-LiveTiming.jpg" border="0" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="rainDelayDiv" style="display: none; width: 100%;" class="main-wrapper">
+            <div class="bg-grey main-container">
+                <div id="top-content" class="LeftColumnContainer clearfix">
+                    <a href="http://www.indycar.com">
+                        <!--<img src="https://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2019/2019_img_rain_delay.jpg" style="width: 100%;" />-->
+                        <img src="https://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2020/RainDelay_400px.jpg" style="width: 100%;" />
+                    </a>
+                </div>
+                <div class="LeftColumnContainer clearfix" style="margin-top: 25px;">
+                    <div class="feederLink2">
+                        <a href="https://www.indypro2000.com/results/live-timing" target="_blank">
+                            <img src="http://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2020/IP2K-LiveTiming.jpg" border="0" />
+                        </a>
+                    </div>
+                    <div class="feederLink3">
+                        <a href="https://www.usf2000.com/results/live-timing" target="_blank">
+                            <img src="http://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2020/USF2K-LiveTiming.jpg" border="0" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="RaceControlContentDiv" class="main-wrapper" style="display: none;">
+            <div class="bg-grey main-container">
+
+                <div id="top-content" class="LeftColumnContainer clearfix">
+                    <div id="VideoDiv" class="nonScrolled">
+                        <iframe id="VideoPlayer" src="" frameborder="0" style="width: 100%; height: 100%;" allowfullscreen=allowfullscreen></iframe>
+                    </div>
+                    <div id="radioContainer" class="VideoContainer">
+                        <a id="AdLink" target="_blank">
+                            <div id="radioAd" class="radioAd">
+                                <div class="radioDiv" id="RadioDiv">
+                                    <iframe src="https://mixlr.com/indycar/embed?color=000000" width="280" height="200" scrolling="no" frameborder="no" marginheight="0" marginwidth="0"></iframe>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="RightRail">
+                        <div id="videoAd" style="text-align: center; margin-bottom: 10px;">
+                            <a id="VideoAdLink" target="_blank">
+                                <img id="VideoAdImage" style="width: 75%;" />
+                            </a>
+                        </div>
+                        <div class="twitter" id="twitterDiv">
+                            <a class="twitter-timeline" href="https://twitter.com/IndyCar">Tweets by IndyCar</a>
+                            <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </div>
+                    </div>
+                    <div class="TimingAndVideoContainer">
+                        <div id="MobileHeaderDiv" class="mobileHeader">
+                            <div id="FeatureDriverDiv" style="width: 450px; height: 215px; background-color: white;" class="featuredDriverHidden">
+                                <div style="width: 50%; float: left;">
+                                    <div style="padding: 5px 0 5px 5px;">
+                                        <label id="fd_DriverFirstName" style="font-family: 'Roboto Condensed', sans-serif; font-size: 2rem; font-style: italic; font-weight: bold; text-transform: uppercase; color: black;"></label><br />
+                                        <label id="fd_DriverLastName" style="font-family: 'Roboto Condensed', sans-serif; font-size: 2rem; font-style: italic; font-weight: bold; text-transform: uppercase; color: black;"></label>
+                                    </div>
+                                </div>
+                                <div style="width: 50%; float: right; font-size: 11px;">
+                                    <div style="width: 100%; height: 100px; min-height: 100px;">
+                                        <div style="float: right; clear: both; text-align: right; font-family: 'Roboto Condensed', sans-serif; font-size: 2rem; font-style: italic; font-weight: bold; text-transform: uppercase; padding: 5px 5px 5px 0; color: #ed1c24;">
+                                            <label id="fd_FeatureTitle"></label>
+                                        </div>
+                                        <div style="float: right; font-family: Arial, sans-serif; font-size: 1.4rem; font-weight: 700; padding: 5px; clear: both; color: black;">
+                                            <label id="fd_Line1"></label>
+                                        </div>
+                                        <div style="float: right; font-family: Arial, sans-serif; font-size: 1.4rem; font-weight: 700; padding: 5px; clear: both; color: black;">
+                                            <label id="fd_Line2"></label>
+                                        </div>
+                                        <div style="float: right; font-family: Arial, sans-serif; font-size: 1.4rem; font-weight: 700; padding: 5px; clear: both; color: black;">
+                                            <label id="fd_Line3"></label>
+                                        </div>
+                                        <div style="float: right; font-family: Arial, sans-serif; font-size: 1.4rem; font-weight: 700; padding: 5px; clear: both; color: black;">
+                                            <label id="fd_Line4"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width: 30%; float: left;">
+                                    <div style="padding-left: 5px; padding-top: 15px;">
+                                        <img id="fd_DriverHeadShot" src="" />
+                                    </div>
+                                </div>
+                                <div style="width: 68%; float: right;">
+                                    <div style="width: 100%; text-align: center; padding-top: 5px;">
+                                        <img id="fd_CarIllustration" src="" />
+                                    </div>
+                                </div>
+                                <div style="width: 30%; float: left;">
+                                    <div style="clear: both; font-size: 11px; padding-top: 15px;">
+                                        <img id="fd_CarNumber" style="padding: 5px; display: inline-block; vertical-align: middle;" />
+                                        <img id="fd_EngineIcon" style="padding: 5px; display: inline-block; vertical-align: middle;" />
+                                        <img id="fd_DriverFlag" style="padding: 5px; display: inline-block; vertical-align: middle;" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="SessionInformationDiv" class="sessionInformationNonScrolled">
+                                <div style="float: left; width: 100%;">
+                                    <div id="FlagDiv" style="padding: 10px; float: left;" class="flagDiv">
+                                        <img id="MobileSeriesLogoImage" style="height: 80px; width: 225px;" />
+                                    </div>
+                                    <div id="SessionInfoDiv" style="float: left;" class="SessionInfoDivNonScrolled">
+                                        <div style="padding: 10px 3% 5px 3%; font-family: 'Roboto Condensed', sans-serif; font-size: 1.6rem; font-style: italic; font-weight: bold; text-transform: uppercase;">
+                                            <label id="MobileSessionNameLabel"></label>
+                                        </div>
+                                        <div style="padding: 0 3%; font-family: Arial, sans-serif; font-size: 1.4rem;">
+                                            Commentary:
+                                            <label id="MobileSessionCommentLabel" style="font-family: Arial, sans-serif; font-size: 1.2rem; font-weight: normal;">
+                                            </label>
+                                        </div>
+                                        <div id="MobileTimeRemainingDiv" style="padding: 5px 3% 0 3%;">
+                                            <label id="MobileTimeRemainingLabel" style="font-family: 'Roboto Condensed', sans-serif; font-size: 1.6rem; font-style: italic; font-weight: bold; text-transform: uppercase;">
+                                            </label>
+                                        </div>
+                                        <div id="MobileLapsDiv" style="padding: 5px 3% 0 3%;">
+                                            <label id="MobileLapsLabel" style="font-family: 'Roboto Condensed', sans-serif; font-size: 1.6rem; font-style: italic; font-weight: bold; text-transform: uppercase;">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rotateDiv" style="width: 100%; background-color: black;">
+                                <div style="text-align: center; font-size: 12px; padding-left: 10px; padding-right: 5px; padding-bottom: 10px; width: 200px; margin: 0 auto; background-color: black;">
+                                    <img src="https://d2i8ejbvsgsqtt.cloudfront.net/TSImages/img_rotate.png" height="22" /><div><label style="vertical-align: top;">Rotate to Expand Columns</label></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="MobileTimingScoringDiv" class="mobile-timing-container">
+                        </div>
+                        <div id="NoTowDiv" class="notowcontainer">
+                        </div>
+                        <div style="background-color: White; clear: both; overflow: hidden; width: 98%; margin-left: 1%;">
+                            <div id="LegendDiv" style="padding-top: 15px; font-size: 10px; font-weight: bold;
+                                    background-color: White; color: black; overflow: hidden; float: left;">
+                            </div>
+                            <div id="TrackMapDiv" style="background-color: White; float: left; text-align: center;">
+                                <img id="trackMapImage" src="https://digbza2f4g9qo.cloudfront.net/-/media/IndyCar/Schedules/TrackOutlines/Sectors/STP-Sections.jpg" style="width: 90%; padding: 5%;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="LeftColumnContainer clearfix" style="margin-top: 25px;">
+                    <div class="feederLink2">
+                        <a href="https://www.indypro2000.com/results/live-timing" target="_blank">
+                            <img src="http://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2020/IP2K-LiveTiming.jpg" border="0" />
+                        </a>
+                    </div>
+                    <div class="feederLink3">
+                        <a href="https://www.usf2000.com/results/live-timing" target="_blank">
+                            <img src="http://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2020/USF2K-LiveTiming.jpg" border="0" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer role="footer" id="footer" class="footer">
+            <!-- START: MODULES/FOOTER-NAVIGATION-->
+            <div class="footer-navigation">
+                <div class="footer-navigation__container">
+
+                    <ul class="footer-navigation__nav-items">
+
+                        <li class="dropdown nav-item">
+                            <a href="" class="nav-item__nav-link">
+                                Resources
+                            </a>
+                            <ul class="nav-item__sub-pages">
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Schedule" target="">
+                                        Event Schedule
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/-/media/Files/Current-Schedule.pdf" target="_blank">
+                                        PDF Schedule
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Radio/radio-broadcasts" target="_blank">
+                                        Podcasts
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="dropdown nav-item">
+                            <a href="" class="nav-item__nav-link">
+                                Experience INDYCAR
+                            </a>
+                            <ul class="nav-item__sub-pages">
+
+                                <li class="nav-item__nav-item">
+                                    <a href="http://racecontrol.indycar.com" target="">
+                                        Timing &amp; Scoring
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="http://www.INDYCARNation.com" target="_blank">
+                                        INDYCAR Nation
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/mobile-app" target="_blank">
+                                        INDYCAR App
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Videos" target="">
+                                        Videos
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Photos" target="">
+                                        Photos
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Fan-Info/INDYCAR-101" target="">
+                                        INDYCAR 101
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="dropdown nav-item">
+                            <a href="" class="nav-item__nav-link">
+                                Shop INDYCAR
+                            </a>
+                            <ul class="nav-item__sub-pages">
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/collections/indycar-mens" target="_blank">
+                                        Mens
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/collections/indycar-womens" target="_blank">
+                                        Womens
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/collections/indycar-youth" target="_blank">
+                                        Youth
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/collections/indycar-hats" target="_blank">
+                                        Headwear
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/collections/indycar-accessories-diecast" target="_blank">
+                                        Diecast Cars
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/collections/indycar-accessories" target="_blank">
+                                        Accessories
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="dropdown nav-item">
+                            <a href="" class="nav-item__nav-link">
+                                INDYCAR Corporate
+                            </a>
+                            <ul class="nav-item__sub-pages">
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=3d71ccd9-4ea1-412b-a07c-89a74c544fd6&amp;ccId=19000101_000001&amp;type=MP&amp;lang=en_US" target="_blank">
+                                        Career Opportunities
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Radio" target="">
+                                        INDYCAR Radio
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://pec.imagencloud.com/" target="_blank">
+                                        Media Site
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Sponsors" target="">
+                                        Sponsors
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Contact-Us" target="">
+                                        Contact Us
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="dropdown nav-item">
+                            <a href="https://www.indianapolismotorspeedway.com/" class="nav-item__nav-link">
+                                IMS Corporate
+                            </a>
+                            <ul class="nav-item__sub-pages">
+
+                                <li class="nav-item__nav-item">
+                                    <a href="http://www.ims.com" target="_blank">
+                                        IMS.com
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="http://www.ims.com/buy-tickets" target="_blank">
+                                        IMS Tickets
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="http://www.imsproductionstv.com/" target="_blank">
+                                        IMS Productions
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://pec.imagencloud.com/" target="_blank">
+                                        IMS Media Site
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/pages/ims-homepage" target="_blank">
+                                        IMS Online Store
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <!-- START: MODULES/FOOTER-COPYRIGHT-->
+            <div class="copyright">
+                <div class="copyright__container">
+                    <p class="copyright__copyright">2022 INDYCAR® IS A REGISTERED TRADEMARK OF BRICKYARD TRADEMARKS, INC. / <a href="https://www.indycar.com/privacy">PRIVACY POLICY</a> &amp; <a href="https://www.indycar.com/terms-of-use">TERMS OF USE</a></p>
+
+                </div>
+            </div>
+
+        </footer>
+        <input type="hidden" id="hiddenSeries" />
+        <input type="hidden" id="hiddenOffset" />
+        <input type="hidden" id="hiddenNoTrackActivity" />
+    </div>
+
+    <script type="text/javascript">
+        if (jQuery.browser.mobile) {
+            document.getElementById('affiliatesDiv').style.display = 'none';
+            document.getElementById('footerNavDiv').style.display = 'none';
+            document.getElementById('divideDiv').style.display = 'none';
+            document.getElementById('otherSiteLink').style.display = 'none';
+            document.getElementById('altLogoDiv').style.display = 'none';
+            document.getElementById('TimingScoringTable').style.display = 'none';
+            document.getElementById('FanInfoLink').href = 'http://www.indycar.com';
+        }
+    </script>
+</body>
+</html>
